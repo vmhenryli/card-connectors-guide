@@ -204,6 +204,7 @@
         "request":                    {"type": "object", "description": "Hard-coded fields to be sent with the action request"},
         "allow_repeated" :            {"type": "boolean", "description": "Whether or not the action can be clicked again after successfully completed"},
         "remove_card_on_completion" : {"type": "boolean", "description": "Whether or not clients should remove the card upon successful completion of this action"},
+        "confirmation_popup":         {"$ref":  "#/definitions/confirmationPopup", "description": "Allows the user to cancel or confirm operations"},
         "user_input": {
           "type": "array",
           "items": {"$ref": "#/definitions/cardActionUserInput"},
@@ -211,6 +212,17 @@
         }
       },
       "required": ["id", "action_key", "label", "completed_label", "url", "type"]
+    },
+
+    "confirmationPopup": {
+      "type": "object",
+      "properties": {
+        "title":                    {"type":  "string", "description":  "The title of confirmation popup window"},
+        "text":                     {"type":  "string", "description":  "The text of confirmation popup window"},
+        "confirmation_button_text": {"type":  "string", "description":  "The text on confirmation button of confirmation popup window"},
+        "cancel_button_text":       {"type":  "string", "description":  "The text on cancel button of confirmation popup window"}
+      },
+      "required": ["title", "text", "confirmationButtonText", "cancelButtonText"]
     },
 
     "cardActionUserInput": {
